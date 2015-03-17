@@ -55,7 +55,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 		wait $pid
 
 		newFile=perf"{_}"$serverThreads"_"$i".data"
-		mv perf.data newFile
+		mv perf.data $newFile
 	}
 
 }
