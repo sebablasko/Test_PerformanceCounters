@@ -43,7 +43,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	for ((i=1 ; $i<=$repetitions ; i++))		
 	{
 		echo $i" repetition"
-		perf stat -e cycles,cpu-cycles,ref-cycles,r10000013c,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-dcache-store-misses,L1-icache-loads,L1-icache-load-misses,cpu-migrations,r530263,r530163,r53012e,r53022e,r530324,r53aa24,r530126,r530426,r534026,r531026,r530428,r530128 ./server $maxPackages $serverThreads >> $outfile&
+		perf stat -e cycles,cpu-cycles,ref-cycles,r10000013c,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-dcache-store-misses,L1-icache-loads,L1-icache-load-misses,cpu-migrations,r530263,r530163,r53012e,r53022e,r530324,r53aa24,r530126,r530426,r534026,r531026,r530428,r530128 ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
