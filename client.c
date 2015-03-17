@@ -53,8 +53,8 @@ main(int argc, char **argv) {
 		if(write(socket_fd, buf, BUF_SIZE) != BUF_SIZE) {
 			gettimeofday(&dateFin, NULL);
 			segundos = (dateFin.tv_sec+dateFin.tv_usec/1000000.)-(dateInicio.tv_sec*1.0+dateInicio.tv_usec/1000000.);
-			fprintf(stderr, "Falla el write al servidor, envio %d paquetes\n", i);
-			fprintf(stderr, "total time = %g\n", segundos);
+			//fprintf(stderr, "Falla el write al servidor, envio %d paquetes\n", i);
+			//fprintf(stderr, "total time = %g\n", segundos);
 			break;
 		}
 	}
