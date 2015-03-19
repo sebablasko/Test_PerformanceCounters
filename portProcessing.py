@@ -9,6 +9,7 @@ eventos = {}
 files = glob.glob(os.getcwd()+"/*.data")
 
 for filename in files:
+	print filename
 
 	#filename = sys.argv[1]
 	archivo = open(filename, 'r')
@@ -24,5 +25,7 @@ for filename in files:
 
 			if registro[1] not in eventos:
 				eventos[registro[1]] = {threads : [registro[0]]}
+			else:
+				eventos[registro[1]][threads].append(registro[0])
 
 pprint.pprint(eventos, width=1)
