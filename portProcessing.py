@@ -39,7 +39,7 @@ salida = open("result.csv", "w+")
 for contador in eventos:
 	salida.write(contador+"\n")
 	for thread in sorted(eventos[contador]):
-		salida.write(thread+";")
+		salida.write(str(thread)+";")
 		for val in eventos[contador][thread]:
 			salida.write(val+";")
 		salida.write("\n")
