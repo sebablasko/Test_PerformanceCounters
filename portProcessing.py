@@ -2,8 +2,18 @@ import sys
 filename = sys.argv[1]
 archivo = open(filename, 'r')
 
+threads = filename.split("_")[1]
+repetition = filename.split("_")[2]
+
+eventos = {}
+
 for line in archivo:
 	if "%" in line:
-		records = line.split(" ")
-		records = filter(lambda x: x!="", records)
-		print records
+		registro = line.split(" ")
+		registro = filter(lambda x: x!="", registro)
+		registro = registro[0:1]
+
+		if registro[1] is not in eventos:
+			eventos[registro[1]] = {threads : []}
+
+print eventos
