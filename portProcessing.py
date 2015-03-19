@@ -11,7 +11,7 @@ for line in archivo:
 	if "%" in line:
 		registro = line.split(" ")
 		registro = filter(lambda x: x!="", registro)
-		registro = registro[0:1]
+		registro = registro[0:2]
 
 		if registro[1] not in eventos:
 			eventos[registro[1]] = {threads : []}
