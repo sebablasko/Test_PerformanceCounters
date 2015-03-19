@@ -41,6 +41,6 @@ for contador in eventos:
 	for thread in eventos[contador]:
 		salida.write(thread+";")
 		for val in eventos[contador][thread]:
-			salida.write(eventos[contador][thread])
+			salida.write(val)
 	salida.write("\n\n")
 salida.close()
