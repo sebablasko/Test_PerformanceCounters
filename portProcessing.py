@@ -8,14 +8,13 @@ eventos = {}
 
 files = glob.glob(os.getcwd()+"/*.data")
 
-for filename in files:
-	print filename
+for filename in sorted(files):
 
 	#filename = sys.argv[1]
 	archivo = open(filename, 'r')
 
-	threads = filename.split("_")[1]
-	repetition = filename.split("_")[2]
+	threads = archivo.name.split("_")[1]
+	repetition = archivo.name.split("_")[2].split(".")[0]
 
 	for line in archivo:
 		if "%" in line:
