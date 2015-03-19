@@ -13,7 +13,7 @@ for line in archivo:
 		registro = filter(lambda x: x!="", registro)
 		registro = registro[0:1]
 
-		if registro[1] is not in eventos:
+		if registro[1] not in eventos:
 			eventos[registro[1]] = {threads : []}
 
 print eventos
