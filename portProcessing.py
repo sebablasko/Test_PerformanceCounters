@@ -15,7 +15,7 @@ for filename in sorted(files):
 	#filename = sys.argv[1]
 	archivo = open(filename, 'r')
 
-	int(threads) = os.path.basename(archivo.name).split("_")[1]
+	threads = int(os.path.basename(archivo.name).split("_")[1])
 	repetition = os.path.basename(archivo.name).split("_")[2].split(".")[0]
 
 	for line in archivo:
@@ -31,7 +31,7 @@ for filename in sorted(files):
 			eventos[registro[1]][threads].append(registro[0].replace(",",""))
 	archivo.close()
 
-pprint.pprint(eventos, width=1)
+#pprint.pprint(eventos, width=1)
 
 
 
