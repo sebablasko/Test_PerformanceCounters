@@ -103,7 +103,8 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	for ((i=1 ; $i<=$repetitions ; i++))		
 	{
 		echo $i" repetition"
-		perf stat -e r500101,r501020,r530f27,L1D_WB_L2:0x0f -n ./server $maxPackages $serverThreads &
+		newFile=perfStat"_"$serverThreads"_"$i".data"
+		perf stat -e r500101,r501020,r530f27,r500401 -n -o $newFile ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
@@ -113,9 +114,6 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 			./client $maxPackages 127.0.0.1 > /dev/null &
 		}
 		wait $pid
-
-		#newFile=perf"_"$serverThreads"_"$i".data"
-		#mv perf.data $newFile
 	}
 
 }
