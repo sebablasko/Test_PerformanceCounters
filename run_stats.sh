@@ -104,7 +104,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	{
 		#echo $i" repetition"
 		newFile=perfStat"_"$serverThreads"_"$i".data"
-		perf stat -e r500101,r501020,r530f27,r500401,r530f28 -n -o $newFile ./server $maxPackages $serverThreads &
+		perf stat -e cycles,cpu-cycles,ref-cycles,r10000013c,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-dcache-store-misses,L1-icache-loads,L1-icache-load-misses,cpu-migrations -o $newFile ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
