@@ -42,3 +42,15 @@ for contador in eventos:
 		salida.write("\n")
 	salida.write("\n\n")
 salida.close()
+
+
+summary = []
+for contador in eventos:
+	actual = [contador]
+	for thread in sorted(eventos[contador]):
+		actual.append(thread)
+		actual.append(promedio(eventos[contador][thread]))
+	summary.append(actual)
+
+import pprint
+pprint.pprint(summary, width=1)
