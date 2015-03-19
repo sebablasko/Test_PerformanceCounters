@@ -102,7 +102,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 
 	for ((i=1 ; $i<=$repetitions ; i++))		
 	{
-		echo $i" repetition"
+		#echo $i" repetition"
 		newFile=perfStat"_"$serverThreads"_"$i".data"
 		perf stat -e r500101,r501020,r530f27,r500401 -n -o $newFile ./server $maxPackages $serverThreads &
 
