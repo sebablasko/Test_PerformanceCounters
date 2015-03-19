@@ -1,6 +1,8 @@
 import sys
 import os
 import glob
+def promedio(l):
+	return reduce(lambda q,p: float(p)+float(q), l)/len(l)
 
 import pprint
 eventos = {}
@@ -27,5 +29,16 @@ for filename in sorted(files):
 			if threads not in eventos[registro[1]]:
 				eventos[registro[1]][threads] = []
 			eventos[registro[1]][threads].append(registro[0])
+	archivo.close()
 
 pprint.pprint(eventos, width=1)
+
+
+
+salida = open("result.csv", "w+")
+for contador in eventos:
+	salida.write(contador+"\n")
+	for thread in eventos[contador]:
+		salida.write(thread+";"+promedio(eventos[contador][thread]))
+	salida.write("\n\n")
+salida.close()
