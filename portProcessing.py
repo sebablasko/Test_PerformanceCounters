@@ -27,7 +27,7 @@ for filename in sorted(files):
 			else:
 				if threads in eventos[registro[1]]:
 					eventos[registro[1]][threads].append(registro[0])
-				else
+				else:
 					eventos[registro[1]][threads] = {threads : [registro[0]]}
 
 pprint.pprint(eventos, width=1)
