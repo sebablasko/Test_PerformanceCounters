@@ -28,7 +28,7 @@ for filename in sorted(files):
 				eventos[registro[1]] = {}
 			if threads not in eventos[registro[1]]:
 				eventos[registro[1]][threads] = []
-			eventos[registro[1]][threads].append(registro[0])
+			eventos[registro[1]][threads].append(registro[0].replace(",",""))
 	archivo.close()
 
 pprint.pprint(eventos, width=1)
