@@ -2,10 +2,10 @@
 
 make all
 
-limite_threads=4
+limite_threads=64
 clients=4
 maxPackages=1000000
-repetitions=2
+repetitions=10
 
 #Contadores a revisar:
 ##NAME - description
@@ -104,7 +104,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	{
 		#echo $i" repetition"
 		newFile=perfStat"_"$serverThreads"_"$i".data"
-		perf stat -e r500101,r501020,r530f27,r500401 -n -o $newFile ./server $maxPackages $serverThreads &
+		perf stat -e r500101,r501020,r530f27,r500401,r530f28 -n -o $newFile ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
