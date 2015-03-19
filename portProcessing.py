@@ -38,7 +38,7 @@ pprint.pprint(eventos, width=1)
 salida = open("result.csv", "w+")
 for contador in eventos:
 	salida.write(contador+"\n")
-	for thread in eventos[contador]:
+	for thread in sorted(eventos[contador]):
 		salida.write(thread+";")
 		for val in eventos[contador][thread]:
 			salida.write(val+";")
