@@ -1,6 +1,8 @@
 import sys
 import os
 import glob
+
+import pprint
 eventos = {}
 
 
@@ -23,4 +25,4 @@ for filename in files:
 			if registro[1] not in eventos:
 				eventos[registro[1]] = {threads : [registro[0]]}
 
-print eventos
+pprint.pprint(eventos, width=1)
