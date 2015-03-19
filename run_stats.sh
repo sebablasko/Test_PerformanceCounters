@@ -103,7 +103,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	for ((i=1 ; $i<=$repetitions ; i++))		
 	{
 		echo $i" repetition"
-		perf stat -e r500101,r501020,r530f27,L1D_WB_L2:0x0f -n ./server $maxPackages $serverThreads >> casa.txt &
+		perf stat -e r500101,r501020,r530f27,L1D_WB_L2:0x0f -n ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
