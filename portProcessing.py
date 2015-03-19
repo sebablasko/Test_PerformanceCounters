@@ -13,6 +13,7 @@ for filename in sorted(files):
 	#filename = sys.argv[1]
 	archivo = open(filename, 'r')
 
+	print archivo.name
 	threads = archivo.name.split("_")[1]
 	repetition = archivo.name.split("_")[2].split(".")[0]
 
