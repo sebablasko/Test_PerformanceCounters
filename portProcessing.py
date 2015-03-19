@@ -13,9 +13,8 @@ for filename in sorted(files):
 	#filename = sys.argv[1]
 	archivo = open(filename, 'r')
 
-	print os.path.basename(archivo.name)
-	threads = archivo.name.split("_")[1]
-	repetition = archivo.name.split("_")[2].split(".")[0]
+	threads = os.path.basename(archivo.name).split("_")[1]
+	repetition = os.path.basename(archivo.name).split("_")[2].split(".")[0]
 
 	for line in archivo:
 		if "%" in line:
