@@ -32,7 +32,7 @@ for filename in sorted(files):
 #import pprint
 #pprint.pprint(eventos, width=1)
 
-salida = open("result.csv", "w+")
+salida = open("FullResults.csv", "w+")
 for contador in eventos:
 	salida.write(contador+"\n")
 	for thread in sorted(eventos[contador]):
@@ -48,9 +48,14 @@ summary = []
 for contador in eventos:
 	actual = [contador]
 	for thread in sorted(eventos[contador]):
-		actual.append(thread)
 		actual.append(promedio(eventos[contador][thread]))
 	summary.append(actual)
 
-import pprint
-pprint.pprint(summary, width=1)
+salida = open("SummaryResults.csv", "w+")
+salida.write("\n\n")
+for tupla in summary:
+	for val in tupla:
+		salida.write(str(val)+",")
+	salida.write("\n")
+salida.write("\n\n")
+salida.close()
