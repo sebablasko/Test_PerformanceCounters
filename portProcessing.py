@@ -23,11 +23,9 @@ for filename in sorted(files):
 			registro = registro[0:2]
 
 			if registro[1] not in eventos:
-				eventos[registro[1]] = {threads : [registro[0]]}
-			else:
-				if threads in eventos[registro[1]]:
-					eventos[registro[1]][threads].append(registro[0])
-				else:
-					eventos[registro[1]][threads] = {threads : [registro[0]]}
+				eventos[registro[1]] = {}
+			if threads not in eventos[registro[1]]:
+				eventos[registro[1]][threads] = []
+			eventos[registro[1]][threads].append(registro[0])
 
 pprint.pprint(eventos, width=1)
