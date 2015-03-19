@@ -2,10 +2,10 @@
 
 make all
 
-limite_threads=8
+limite_threads=32
 clients=4
 maxPackages=1000000
-repetitions=3
+repetitions=6
 
 #Contadores a revisar:
 ##NAME - description
