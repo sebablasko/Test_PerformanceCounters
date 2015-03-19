@@ -4,9 +4,7 @@ import glob
 def promedio(l):
 	return reduce(lambda q,p: float(p)+float(q), l)/len(l)
 
-import pprint
 eventos = {}
-
 
 files = glob.glob(os.getcwd()+"/*.data")
 
@@ -31,9 +29,8 @@ for filename in sorted(files):
 			eventos[registro[1]][threads].append(registro[0].replace(",",""))
 	archivo.close()
 
+#import pprint
 #pprint.pprint(eventos, width=1)
-
-
 
 salida = open("result.csv", "w+")
 for contador in eventos:
