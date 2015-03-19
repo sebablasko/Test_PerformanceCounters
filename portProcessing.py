@@ -14,6 +14,6 @@ for line in archivo:
 		registro = registro[0:2]
 
 		if registro[1] not in eventos:
-			eventos[registro[1]] = {threads : []}
+			eventos[registro[1]] = {threads : [registro[0]]}
 
 print eventos
