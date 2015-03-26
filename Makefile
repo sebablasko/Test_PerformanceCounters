@@ -12,7 +12,7 @@ rm_server:
 	rm server server.o
 
 devnull: dev_null.o
-        gcc -g dev_null.o -o dev_null -lpthread
+	gcc -g dev_null.o -o dev_null -lpthread
 
 rm_devnull:
 	rm dev_null dev_null.o
