@@ -2,10 +2,10 @@
 
 make all
 
-limite_threads=32
+limite_threads=1
 clients=4
 maxPackages=1000000
-repetitions=6
+repetitions=3
 
 #Contadores a revisar:
 ##NAME - description
@@ -80,6 +80,25 @@ repetitions=6
 #r500804: Cycles GQ data is imported from Cores 0 and 2
 #r501004: Cycles GQ data is imported from Cores 1 and 3
 
+
+# IDX      : 113246222
+# PMU name : wsm_unc (Intel Westmere uncore)
+# Name     : UNC_GQ_DATA_TO
+# Equiv    : None
+# Flags    : None
+# Desc     : Cycles GQ data is exported
+# Code     : 0x5
+# Umask-00 : 0x01 : PMU : [QPI_QMC] : None : Cycles GQ data sent to the QPI or QMC
+# Umask-01 : 0x02 : PMU : [LLC] : None : Cycles GQ data sent to LLC
+# Umask-02 : 0x04 : PMU : [CORES] : None : Cycles GQ data sent to cores
+# Modif-00 : 0x00 : PMU : [e] : edge level (boolean)
+# Modif-01 : 0x01 : PMU : [i] : invert (boolean)
+# Modif-02 : 0x02 : PMU : [c] : counter-mask in range [0-255] (integer)
+# Modif-03 : 0x03 : PMU : [o] : queue occupancy (boolean)
+
+
+
+
 ##UNC_QHL_REQUESTS - Quickpath Home Logic local read requests
 #r501020: Quickpath Home Logic local read requests
 #r502020: Quickpath Home Logic local write requests
@@ -93,6 +112,17 @@ repetitions=6
 #r500201: Cycles GQ write tracker is busy
 #r500401: Cycles GQ peer probe tracker is busy
 
+##L1D - L1D cache
+#r530451: L1D cache lines replaced in M state
+#r530251: L1D cache lines allocated in the M state
+#r530851: L1D snoop eviction of cache lines in M state
+#r530151: L1 data cache lines allocated
+
+
+##AGREGAR!
+#OFFCORE_RESPONSE_1
+#UNC_LLC_LINES_IN
+#UNC_LLC_LINES_OUT
 
 echo ""
 
@@ -104,7 +134,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	{
 		#echo $i" repetition"
 		newFile=perfStat"_"$serverThreads"_"$i".data"
-		perf stat -e cycles,cpu-cycles,ref-cycles,r10000013c,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-dcache-store-misses,L1-icache-loads,L1-icache-load-misses,cpu-migrations,r530263,r530163,r53012e,r53022e,r530324,r53aa24,r53ff26,r530f26,r530826,r530426,r530226,r530126,r53f026,r538026,r534026,r532026,r531026,r530f28,r530828,r530428,r530228,r530128,r534027,r53e027,r531027,r538027,r53f027,r532027,r530e27,r530127,r530827,r530f27,r530227,r500104,r500204,r500404,r500804,r501004,r501020,r502020,r500420,r500120,r500220,r500820,r500101,r500201,r500401 -o $newFile ./server $maxPackages $serverThreads &
+		perf stat -e r500104, r500204, r500404, r500105, r500205, r500405, r500420, r500820, r500108, r500208, r500109, r500209, r50010a, r50020a, r50040a, r50080a, r500f0a, r50010b, r50020b, r50040b, r50080b, r50100b, r501f0b, r530426, r530126, r530326, r530526, r530451, r530251, r530851 -o $newFile ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
