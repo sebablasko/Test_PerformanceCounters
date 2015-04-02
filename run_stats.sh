@@ -7,122 +7,7 @@ clients=4
 maxPackages=1000000
 repetitions=3
 
-#Contadores a revisar:
-##NAME - description
-
-#cycles :
-#cpu-cycles:
-#ref-cycles:
-#r10000013c:
-#cache-references:
-#cache-misses:
-#L1-dcache-loads:
-#L1-dcache-load-misses:
-#L1-dcache-stores:
-#L1-dcache-store-misses
-#L1-icache-loads
-#L1-icache-load-misses
-#cpu-migrations
-
-##CACHE_LOCK_CYCLES - Cache locked
-#r530263: Cycles L1D locked
-#r530163: Cycles L1D and L2
-
-##L3_LAT_CACHE - Last level cache accesses
-#r53012e: Last level cache miss
-#r53022e: Last level cache reference
-
-##L2_RQSTS - L2 requests
-#r530324: L2 requests
-#r53aa24: All L2 misses
-
-##L2_DATA_RQSTS - All L2 data requests
-#r53ff26: All L2 data requests
-#r530f26: L2 data demand requests
-#r530826: L2 data demand loads in M state
-#r530426: L2 data demand loads in E state
-#r530226: L2 data demand loads in S state
-#r530126: L2 data demand loads in I state (misses)
-#r53f026: All L2 data prefetches
-#r538026: L2 data prefetches in M state
-#r534026: L2 data prefetches in E state
-#r532026: L2 data prefetches in the S state
-#r531026: L2 data prefetches in the I state (misses)
-
-##L1D_WB_L2 - L1D writebacks to L2
-#r530f28: All L1 writebacks to L2
-#r530828: L1 writebacks to L2 in M state
-#r530428: L1 writebacks to L2 in E state
-#r530228: L1 writebacks to L2 in S state
-#r530128: L1 writebacks to L2 in I state (misses)
-
-##L2_WRITE - L2 demand lock/store RFO
-#r534027: L2 demand lock RFOs in E state
-#r53e027: All demand L2 lock RFOs that hit the cache
-#r531027: L2 demand lock RFOs in I state (misses)
-#r538027: L2 demand lock RFOs in M state
-#r53f027: All demand L2 lock RFOs
-#r532027: L2 demand lock RFOs in S state
-#r530e27: All L2 demand store RFOs that hit the cache
-#r530127: L2 demand store RFOs in I state (misses)
-#r530827: L2 demand store RFOs in M state
-#r530f27: All L2 demand store RFOs
-#r530227: L2 demand store RFOs in S state
-
-##Interfaces a destacar:
-###GQ = Global Queue
-###Quickpath
-
-##UNC_GQ_DATA_FROM - Cycles GQ data is imported
-#r500104: Cycles GQ data is imported from Quickpath interface
-#r500204: Cycles GQ data is imported from Quickpath memory interface
-#r500404: Cycles GQ data is imported from LLC
-#r500804: Cycles GQ data is imported from Cores 0 and 2
-#r501004: Cycles GQ data is imported from Cores 1 and 3
-
-
-# IDX      : 113246222
-# PMU name : wsm_unc (Intel Westmere uncore)
-# Name     : UNC_GQ_DATA_TO
-# Equiv    : None
-# Flags    : None
-# Desc     : Cycles GQ data is exported
-# Code     : 0x5
-# Umask-00 : 0x01 : PMU : [QPI_QMC] : None : Cycles GQ data sent to the QPI or QMC
-# Umask-01 : 0x02 : PMU : [LLC] : None : Cycles GQ data sent to LLC
-# Umask-02 : 0x04 : PMU : [CORES] : None : Cycles GQ data sent to cores
-# Modif-00 : 0x00 : PMU : [e] : edge level (boolean)
-# Modif-01 : 0x01 : PMU : [i] : invert (boolean)
-# Modif-02 : 0x02 : PMU : [c] : counter-mask in range [0-255] (integer)
-# Modif-03 : 0x03 : PMU : [o] : queue occupancy (boolean)
-
-
-
-
-##UNC_QHL_REQUESTS - Quickpath Home Logic local read requests
-#r501020: Quickpath Home Logic local read requests
-#r502020: Quickpath Home Logic local write requests
-#r500420: Quickpath Home Logic remote read requests
-#r500120: Quickpath Home Logic IOH read requests
-#r500220: Quickpath Home Logic IOH write requests
-#r500820: Quickpath Home Logic remote write requests
-
-##UNC_GQ_CYCLES_NOT_EMPTY - Cycles GQ read tracker is busy
-#r500101: Cycles GQ read tracker is busy
-#r500201: Cycles GQ write tracker is busy
-#r500401: Cycles GQ peer probe tracker is busy
-
-##L1D - L1D cache
-#r530451: L1D cache lines replaced in M state
-#r530251: L1D cache lines allocated in the M state
-#r530851: L1D snoop eviction of cache lines in M state
-#r530151: L1 data cache lines allocated
-
-
-##AGREGAR!
-#OFFCORE_RESPONSE_1
-#UNC_LLC_LINES_IN
-#UNC_LLC_LINES_OUT
+counters=r500104, r500204, r500404, r500105, r500205, r500405, r500420, r500820, r530451, r530251, r530851, r500108, r500208, r500109, r500209, r50010a, r50020a, r50040a, r50080a, r500f0a, r50010b, r50020b, r50040b, r50080b, r50100b, r501f0b, r530426, r530126, r530326, r530526
 
 echo ""
 
@@ -134,7 +19,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 	{
 		#echo $i" repetition"
 		newFile=perfStat"_"$serverThreads"_"$i".data"
-		perf stat -e r500104,r500204,r500404,r500105,r500205,r500405,r500420,r500820,r500108,r500208,r500109,r500209,r50010a,r50020a,r50040a,r50080a,r500f0a,r50010b,r50020b,r50040b,r50080b,r50100b,r501f0b,r530426,r530126,r530326,r530526,r530451,r530251,r530851 -o $newFile ./server $maxPackages $serverThreads &
+		perf stat -e $counters -o $newFile ./server $maxPackages $serverThreads &
 
 		pid=$!
 		sleep 1
