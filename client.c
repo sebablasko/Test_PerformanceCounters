@@ -14,12 +14,20 @@ char buf[BUF_SIZE];
 char* IP_DEST;
 int mostrarInfo = 0;
 int MAX_PACKS = 1;
+int DESTINATION_PORT = FIRST_PORT;
 double segundos;
+
+/*
+	Esta version del cliente recibe: 
+		-cantidad de paquetes a enviar
+		-ip de destino
+		-puerto de destino
+*/
 
 main(int argc, char **argv) {
 
-	if(argc < 3){
-		fprintf(stderr, "Syntax Error: Esperado: ./client MAX_PACKS IP_DEST\n");
+	if(argc < 4){
+		fprintf(stderr, "Syntax Error: Esperado: ./client MAX_PACKS IP_DEST DESTINATION_PORT\n");
 		exit(1);
 	}
 
@@ -29,16 +37,18 @@ main(int argc, char **argv) {
 	//Recuperar IP destino
 	IP_DEST = argv[2];
 
+	//Recuperar total de puertos
+	DESTINATION_PORT = atoi(argv[3]);
+
 	/* Llenar de datos el buffer a enviar */
 	int i;
 	for(i = 0; i < BUF_SIZE; i++)
-		buf[i] = 'a'+i;
+		buf[i] = 'h'+i;
 
 	//Crear Socket
 	int socket_fd;
-	int port = FIRST_PORT;
 	char ports[10];
-	sprintf(ports, "%d", port);
+	sprintf(ports, "%d", DESTINATION_PORT);
 	socket_fd = udp_connect(IP_DEST, ports);
 	if(socket_fd < 0) {
 		fprintf(stderr, "connection refused\n");

@@ -14,6 +14,7 @@ pthread_mutex_t lock;
 int mostrarInfo = 0;
 int MAX_PACKS = 1;
 int NTHREADS = 1;
+int DESTINATION_PORT = FIRST_PORT;
 double segundos;
 
 //Metodo para Threads
@@ -51,8 +52,8 @@ llamadaHilo(int socket_fd){
 
 int main(int argc, char **argv){
 	//Verificar Parametros Entrada
-	if(argc <3){
-		fprintf(stderr,"Syntax Error: Esperado: ./server MAX_PACKS NTHREADS\n");
+	if(argc <4){
+		fprintf(stderr,"Syntax Error: Esperado: ./server MAX_PACKS NTHREADS DESTINATION_PORT\n");
 		exit(1);
 	}
 
@@ -63,11 +64,13 @@ int main(int argc, char **argv){
 	NTHREADS = atoi(argv[2]);
 	pthread_t pids[NTHREADS];
 
+	//Recuperar puerto destino
+	DESTINATION_PORT = atoi(argv[3]);
+
 	//Crear Socket
 	int socket_fd;
-	int port = FIRST_PORT;
 	char ports[10];
-	sprintf(ports, "%d", port);
+	sprintf(ports, "%d", DESTINATION_PORT);
 	socket_fd = udp_bind(ports);
 	if(socket_fd < 0) {
 		fprintf(stderr, "Error de bind al tomar el puerto\n");
