@@ -26,7 +26,7 @@ for ((serverThreads=1 ; $serverThreads<=$limite_threads ; serverThreads=2*server
 
 		for ((j=1 ; $j<=$clients ; j++))
 		{
-			./client $maxPackages 127.0.0.1 > /dev/null &
+			./client $(($maxPackages*10)) 127.0.0.1 > /dev/null &
 		}
 		wait $pid
 	}
