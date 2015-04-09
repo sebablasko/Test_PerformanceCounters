@@ -1,9 +1,9 @@
 import sys
 import os
 import glob
-def promedio(l):
+def promedio(l, div):
 	if(len(l)>1):
-		return float(str(reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/len(l)).replace(",",""))
+		return float(str(reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/float(div).replace(",",""))
 	else:
 		return float(str(l[0]).replace(",",""))
 
@@ -51,7 +51,7 @@ summary = []
 for contador in eventos:
 	actual = [contador]
 	for thread in sorted(eventos[contador]):
-		actual.append(promedio(eventos[contador][thread]))
+		actual.append(promedio(eventos[contador][thread], thread))
 	summary.append(actual)
 
 salida = open("SummaryResults.csv", "w+")
