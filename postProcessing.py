@@ -5,7 +5,7 @@ def promedio(l):
 	if(len(l)>1):
 		return reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/len(l)
 	else:
-		return float(str(p).replace(",",""))
+		return float(str(l[0]).replace(",",""))
 
 eventos = {}
 
