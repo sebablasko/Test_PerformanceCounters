@@ -13,7 +13,10 @@ files = glob.glob(os.getcwd()+"/*.data")
 
 for filename in sorted(files):
 
-	#filename = sys.argv[1]
+	if(len(sys.argv)<2):
+		print "error"
+		exit()
+	repetitions = sys.argv[1]
 	archivo = open(filename, 'r')
 
 	threads = int(os.path.basename(archivo.name).split("_")[2])
