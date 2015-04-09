@@ -94,7 +94,7 @@ for ((serverSockets=1 ; $serverSockets<=$limite_threads ; serverSockets=2*server
 
 }
 
-python postProcessing.py
+python postProcessing.py $repetitions
 mv SummaryResults.csv SummaryResults_UDPMultiSocket.csv
 mv FullResults.csv FullResults_UDPMultiSocket.csv
 #rm *.data
