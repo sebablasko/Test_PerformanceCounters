@@ -3,7 +3,7 @@ import os
 import glob
 def promedio(l):
 	if(len(l)>1):
-		return reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/len(l)
+		return float(str(reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/len(l)).replace(",",""))
 	else:
 		return float(str(l[0]).replace(",",""))
 
