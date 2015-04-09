@@ -2,6 +2,7 @@ import sys
 import os
 import glob
 def promedio(l):
+	print l;
 	return reduce(lambda q,p: float(str(p).replace(",",""))+float(str(q).replace(",","")), l)/len(l)
 
 eventos = {}
