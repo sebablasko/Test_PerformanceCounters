@@ -54,7 +54,7 @@ summary = []
 for contador in eventos:
 	actual = [contador]
 	for thread in sorted(eventos[contador]):
-		actual.append(promedio(eventos[contador][thread], thread))
+		actual.append(promedio(eventos[contador][thread], repetitions))
 	summary.append(actual)
 
 salida = open("SummaryResults.csv", "w+")
