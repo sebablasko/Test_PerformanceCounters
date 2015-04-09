@@ -17,10 +17,14 @@ int NTHREADS = 1;
 int DESTINATION_PORT = FIRST_PORT;
 double segundos;
 
-//Metodo para Threads
 /*
-* Recibe el valor del socket para enviar información
+	Esta version del servidor recibe: 
+		-cantidad de paquetes a enviar
+		-Numero de Threads a lanzar para compartir el socket
+		-puerto de bind para el socket
 */
+
+//Metodo para Threads
 llamadaHilo(int socket_fd){
 	char buf[BUF_SIZE];
 	int lectura;
