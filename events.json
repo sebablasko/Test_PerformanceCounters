@@ -1,4 +1,4 @@
-'[{
+[{
 "IDX" : "113246221",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_GQ_DATA_FROM",
@@ -215,4 +215,4 @@
 "r500232" : "Channel 1",
 "r500432" : "Channel 2",
 "r500732" : "Any channel"}
-}]''
+}]
