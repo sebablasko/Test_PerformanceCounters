@@ -33,8 +33,7 @@ for filename in sorted(files):
 	archivo.close()
 
 #Concentrar registros en caso de udpmultisocket
-if len(os.path.basename(archivo.name).split("_")[3].split("."))>1:
-	print len(os.path.basename(archivo.name).split("_")[3].split("."))
+if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 	for contador in eventos:
 		for thread in sorted(eventos[contador]):
 			nuevaLista = []
