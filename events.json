@@ -2,8 +2,8 @@
 "IDX" : "113246221",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_GQ_DATA_FROM",
-"Desc" : "Cycles GQ data is imported",
-"events" : {
+"Description" : "Cycles GQ data is imported",
+"Codes" : {
 "r500104" : "Cycles GQ data is imported from Quickpath interface",
 "r500204" : "Cycles GQ data is imported from Quickpath memory interface",
 "r500404" : "Cycles GQ data is imported from LLC",
@@ -14,8 +14,8 @@
 "IDX" : "113246222",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_GQ_DATA_TO",
-"Desc" : "Cycles GQ data is exported",
-"events" : {
+"Description" : "Cycles GQ data is exported",
+"Codes" : {
 "r500105" : "Cycles GQ data sent to the QPI or QMC",
 "r500205" : "Cycles GQ data sent to LLC",
 "r500405" : "Cycles GQ data sent to cores"}
@@ -24,8 +24,8 @@
 "IDX" : "113246234",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_QHL_REQUESTS",
-"Desc" : "Quickpath Home Logic local read requests",
-"events" : {
+"Description" : "Quickpath Home Logic local read requests",
+"Codes" : {
 "r501020" : "Quickpath Home Logic local read requests",
 "r502020" : "Quickpath Home Logic local write requests",
 "r500420" : "Quickpath Home Logic remote read requests",
@@ -37,8 +37,8 @@
 "IDX" : "111149137",
 "PMU name" : "wsm_dp (Intel Westmere DP)",
 "Name" : "L1D",
-"Desc" : "L1D cache",
-"events" : {
+"Description" : "L1D cache",
+"Codes" : {
 "r530451" : "L1D cache lines replaced in M state",
 "r530251" : "L1D cache lines allocated in the M state",
 "r530851" : "L1D snoop eviction of cache lines in M state",
@@ -48,8 +48,8 @@
 "IDX" : "113246223",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_LLC_HITS",
-"Desc" : "Number of LLC read hits",
-"events" : {
+"Description" : "Number of LLC read hits",
+"Codes" : {
 "r500108" : "Number of LLC read hits",
 "r500208" : "Number of LLC write hits",
 "r500408" : "Number of LLC peer probe hits",
@@ -59,8 +59,8 @@
 "IDX" : "113246226",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_LLC_MISS",
-"Desc" : "Number of LLC read misses",
-"events" : {
+"Description" : "Number of LLC read misses",
+"Codes" : {
 "r500109" : "Number of LLC read misses",
 "r500209" : "Number of LLC write misses",
 "r500409" : "Number of LLC peer probe misses",
@@ -70,8 +70,8 @@
 "IDX" : "113246224",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_LLC_LINES_IN",
-"Desc" : "LLC lines allocated in M state",
-"events" : {
+"Description" : "LLC lines allocated in M state",
+"Codes" : {
 "r50010a" : "LLC lines allocated in M state",
 "r50020a" : "LLC lines allocated in E state",
 "r50040a" : "LLC lines allocated in S state",
@@ -82,8 +82,8 @@
 "IDX" : "113246225",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_LLC_LINES_OUT",
-"Desc" : "LLC lines victimized in M state",
-"events" : {
+"Description" : "LLC lines victimized in M state",
+"Codes" : {
 "r50010b" : "LLC lines victimized in M state",
 "r50020b" : "LLC lines victimized in E state",
 "r50040b" : "LLC lines victimized in S state",
@@ -95,8 +95,8 @@
 "IDX" : "111149128",
 "PMU name" : "wsm_dp (Intel Westmere DP)",
 "Name" : "L2_DATA_RQSTS",
-"Desc" : "All L2 data requests",
-"events" : {
+"Description" : "All L2 data requests",
+"Codes" : {
 "r53ff26" : "All L2 data requests",
 "r530426" : "L2 data demand loads in E state",
 "r530126" : "L2 data demand loads in I state (misses)",
@@ -112,8 +112,8 @@
 {
 "IDX     " : "111149096",
 "Name" : "SNOOPQ_REQUESTS",
-"Desc" : "Snoopq requests",
-"events" : {
+"Description" : "Snoopq requests",
+"Codes" : {
 "PMU name" : "wsm_dp (Intel Westmere DP)",
 "r5304b4" : "Snoop code requests",
 "r5301b4" : "Snoop data requests",
@@ -123,8 +123,8 @@
 "IDX" : "111149132",
 "PMU name" : "wsm_dp (Intel Westmere DP)",
 "Name" : "SNOOPQ_REQUESTS_OUTSTANDING",
-"Desc" : "Outstanding snoop requests",
-"events" : {
+"Description" : "Outstanding snoop requests",
+"Codes" : {
 "r5304b3" : "Outstanding snoop code requests",
 "r53X1b3" : "Outstanding snoop data requests",
 "r53X2b3" : "Outstanding snoop invalidate requests"}
@@ -133,8 +133,8 @@
 "IDX" : "111149136",
 "PMU name" : "wsm_dp (Intel Westmere DP)",
 "Name" : "SNOOP_RESPONSE",
-"Desc" : "Snoop",
-"events" : {
+"Description" : "Snoop",
+"Codes" : {
 "r5301b8" : "Thread responded HIT to snoop",
 "r5302b8" : "Thread responded HITE to snoop",
 "r5304b8" : "Thread responded HITM to snoop"}
@@ -143,8 +143,8 @@
 "IDX" : "113246247",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_QPI_RX_NO_PPT_CREDIT",
-"Desc" : "Link 0 snoop stalls due to no PPT entry",
-"events" : {
+"Description" : "Link 0 snoop stalls due to no PPT entry",
+"Codes" : {
 "r500143" : "Link 0 snoop stalls due to no PPT entry",
 "r500243" : "Link 1 snoop stalls due to no PPT entry"}
 },
@@ -152,8 +152,8 @@
 "IDX" : "113246249",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_QPI_TX_STALLED_MULTI_FLIT",
-"Desc" : "Cycles QPI outbound stalls",
-"events" : {
+"Description" : "Cycles QPI outbound stalls",
+"Codes" : {
 "r500141" : "Cycles QPI outbound link 0 DRS stalled",
 "r500241" : "Cycles QPI outbound link 0 NCB stalled",
 "r500441" : "Cycles QPI outbound link 0 NCS stalled",
@@ -167,8 +167,8 @@
 "IDX" : "113246250",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_QPI_TX_STALLED_SINGLE_FLIT",
-"Desc" : "Cycles QPI outbound link stalls",
-"events" : {
+"Description" : "Cycles QPI outbound link stalls",
+"Codes" : {
 "r500140" : "Cycles QPI outbound link 0 HOME stalled",
 "r500240" : "Cycles QPI outbound link 0 SNOOP stalled",
 "r500440" : "Cycles QPI outbound link 0 NDR stalled",
@@ -182,8 +182,8 @@
 "IDX" : "113246251",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_SNP_RESP_TO_LOCAL_HOME",
-"Desc" : "Local home snoop response",
-"events" : {
+"Description" : "Local home snoop response",
+"Codes" : {
 "r500106" : "Local home snoop response - LLC does not have cache line",
 "r500206" : "Local home snoop response - LLC has  cache line in S state",
 "r500406" : "Local home snoop response - LLC forwarding cache line in S state.",
@@ -195,8 +195,8 @@
 "IDX" : "113246252",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_SNP_RESP_TO_REMOTE_HOME",
-"Desc" : "Remote home snoop response",
-"events" : {
+"Description" : "Remote home snoop response",
+"Codes" : {
 "r500107" : "Remote home snoop response - LLC does not have cache line",
 "r500207" : "Remote home snoop response - LLC has  cache line in S state",
 "r500407" : "Remote home snoop response - LLC forwarding cache line in S state.",
@@ -209,8 +209,8 @@
 "IDX" : "113246245",
 "PMU name" : "wsm_unc (Intel Westmere uncore)",
 "Name" : "UNC_IMC_RETRY",
-"Desc" : "Number of IMC DRAM channel retries (retries occur in RAS mode only)",
-"events" : {
+"Description" : "Number of IMC DRAM channel retries (retries occur in RAS mode only)",
+"Codes" : {
 "r500132" : "Channel 0",
 "r500232" : "Channel 1",
 "r500432" : "Channel 2",
