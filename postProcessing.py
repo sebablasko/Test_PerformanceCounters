@@ -7,25 +7,23 @@ def promedio(l, div):
 	else:
 		return float(str(l[0]).replace(",",""))
 
-eventos = {}
-
 files = glob.glob(os.getcwd()+"/*.data")
+eventos = {}
 
 for filename in sorted(files):
 	if(len(sys.argv)<2):
-		print "error"
+		print "Error, debe ingresar como parámetro el número de repeticiones que incluyo la prueba"
 		exit()
 	repetitions = sys.argv[1]
 	archivo = open(filename, 'r')
-
 	threads = int(os.path.basename(archivo.name).split("_")[2])
 	repetition = os.path.basename(archivo.name).split("_")[3].split(".")[0]
 
 	for line in archivo:
-		if "%" in line:
+		if "%" in line: 									# Es un registro de evento
 			registro = line.split(" ")
 			registro = filter(lambda x: x!="", registro)
-			registro = registro[0:2]
+			registro = registro[0:2]						#registro=[TotalApariciones, CodigoEvento]
 
 			if registro[1] not in eventos:
 				eventos[registro[1]] = {}
@@ -33,6 +31,19 @@ for filename in sorted(files):
 				eventos[registro[1]][threads] = []
 			eventos[registro[1]][threads].append(registro[0].replace(".",""))
 	archivo.close()
+
+#Concentrar registros en caso de udpmultisocket
+if len(os.path.basename(archivo.name).split("_")[3].split("."))>1:
+	for contador in eventos:
+		for thread in sorted(eventos[contador]):
+			nuevaLista = []
+			for k in range(len(eventos[contador][thread])):
+				totalParcial = 0
+				if k%repetitions==0:
+					nuevaLista.append(totalParcial)
+				else:
+					totalParcial = totalParcial + eventos[contador][thread][k]
+			eventos[contador][thread] = nuevaLista
 
 #import pprint
 #pprint.pprint(eventos, width=1)
@@ -54,6 +65,7 @@ for contador in eventos:
 	actual = [contador]
 	for thread in sorted(eventos[contador]):
 		actual.append(promedio(eventos[contador][thread], repetitions))
+		actual.append(stddev(eventos[contador][thread], repetitions))
 	summary.append(actual)
 
 salida = open("SummaryResults.csv", "w+")
