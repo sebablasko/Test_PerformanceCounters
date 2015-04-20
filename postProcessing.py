@@ -12,7 +12,7 @@ eventos = {}
 
 for filename in sorted(files):
 	if(len(sys.argv)<2):
-		print "Error, debe ingresar como parámetro el número de repeticiones que incluyo la prueba"
+		print "Error, debe ingresar como parametro el numero de repeticiones que incluyo la prueba"
 		exit()
 	repetitions = sys.argv[1]
 	archivo = open(filename, 'r')
@@ -34,6 +34,7 @@ for filename in sorted(files):
 
 #Concentrar registros en caso de udpmultisocket
 if len(os.path.basename(archivo.name).split("_")[3].split("."))>1:
+	print len(os.path.basename(archivo.name).split("_")[3].split("."))
 	for contador in eventos:
 		for thread in sorted(eventos[contador]):
 			nuevaLista = []
