@@ -26,6 +26,7 @@ for filename in sorted(files):
 
 	repetitions = sys.argv[1]
 	archivo = open(filename, 'r')
+	print "processing: "+archivo.name
 	threads = getThreadsInDataFileName(archivo)
 	repetition = getRepetitionInDataFileName(archivo)
 
