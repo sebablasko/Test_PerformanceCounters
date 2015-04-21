@@ -43,8 +43,8 @@ for filename in sorted(files):
 			diccionarioEventos[registro[1]][threads].append(registro[0])
 	archivo.close()
 
-import pprint
-pprint.pprint(diccionarioEventos, width=1)
+#import pprint
+#pprint.pprint(diccionarioEventos, width=1)
 
 #Concentrar registros en caso de udpmultisocket
 if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
@@ -59,12 +59,12 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 					listaNueva.append(total)
 					total = 0
 			diccionarioEventos[contador][threadsTested] = listaNueva
-	pprint.pprint(diccionarioEventos, width=1)
+	#pprint.pprint(diccionarioEventos, width=1)
 
 
 #Hasta aca vamos!
 
-#salida = open("FullResults.csv", "w+")
+salida = open("FullResults.csv", "w+")
 for contador in diccionarioEventos:
 	salida.write(contador+"\n")
 	for thread in sorted(diccionarioEventos[contador]):
