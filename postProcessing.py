@@ -70,7 +70,7 @@ for contador in diccionarioEventos:
 	for thread in sorted(diccionarioEventos[contador]):
 		salida.write(str(thread)+";")
 		for val in diccionarioEventos[contador][thread]:
-			salida.write(val+";")
+			salida.write(str(val)+";")
 		salida.write("\n")
 	salida.write("\n\n")
 salida.close()
@@ -81,7 +81,7 @@ for contador in diccionarioEventos:
 	actual = [contador]
 	for thread in sorted(diccionarioEventos[contador]):
 		actual.append(promedio(diccionarioEventos[contador][thread], repetitions))
-		actual.append(stddev(diccionarioEventos[contador][thread], repetitions))
+		#actual.append(stddev(diccionarioEventos[contador][thread], repetitions))
 	summary.append(actual)
 
 salida = open("SummaryResults.csv", "w+")
