@@ -39,7 +39,7 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 			nuevaLista = []
 			totalParcial = 0
 			for k in range(1, 1+len(eventos[contador][thread])):
-				totalParcial = totalParcial + eventos[contador][thread][k]
+				totalParcial = totalParcial + int(eventos[contador][thread][k])
 				if k%int(repetitions)==0:
 					nuevaLista.append(totalParcial)
 					totalParcial = 0
