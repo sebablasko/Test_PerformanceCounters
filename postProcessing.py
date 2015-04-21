@@ -37,12 +37,12 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 	for contador in eventos:
 		for thread in sorted(eventos[contador]):
 			nuevaLista = []
-			for k in range(len(eventos[contador][thread])):
-				totalParcial = 0
-				if k%repetitions==0:
+			totalParcial = 0
+			for k in range(1, 1+len(eventos[contador][thread])):
+				totalParcial = totalParcial + eventos[contador][thread][k]
+				if k%int(repetitions)==0:
 					nuevaLista.append(totalParcial)
-				else:
-					totalParcial = totalParcial + eventos[contador][thread][k]
+					totalParcial = 0
 			eventos[contador][thread] = nuevaLista
 
 import pprint
