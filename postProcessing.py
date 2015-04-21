@@ -43,12 +43,23 @@ for filename in sorted(files):
 			diccionarioEventos[registro[1]][threads].append(registro[0])
 	archivo.close()
 
+import pprint
+pprint.pprint(diccionarioEventos, width=1)
+
 #Concentrar registros en caso de udpmultisocket
 if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 	print "es multisockets"
-
-import pprint
-pprint.pprint(diccionarioEventos, width=1)
+	for contador in diccionarioEventos:
+		for threadsTested in diccionarioEventos[contador]:
+			listaNueva = []
+			total = 0
+			for k in range(len(diccionarioEventos[contador][threadsTested])):
+				if(k+1)%threadsTested==0:
+					listaNueva.append(total)
+					total = 0
+				total = total + diccionarioEventos[contador][threadsTested][k]
+		diccionarioEventos[contador][threadsTested] = listaNueva
+	pprint.pprint(diccionarioEventos, width=1)
 
 
 #Hasta aca vamos!
