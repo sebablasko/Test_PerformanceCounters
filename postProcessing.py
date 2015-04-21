@@ -54,10 +54,10 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 			listaNueva = []
 			total = 0
 			for k in range(len(diccionarioEventos[contador][threadsTested])):
+				total = total + diccionarioEventos[contador][threadsTested][k]
 				if(k+1)%threadsTested==0:
 					listaNueva.append(total)
 					total = 0
-				total = total + diccionarioEventos[contador][threadsTested][k]
 			diccionarioEventos[contador][threadsTested] = listaNueva
 	pprint.pprint(diccionarioEventos, width=1)
 
