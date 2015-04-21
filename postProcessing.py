@@ -50,6 +50,9 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 import pprint
 pprint.pprint(diccionarioEventos, width=1)
 
+
+#Hasta aca vamos!
+
 #salida = open("FullResults.csv", "w+")
 for contador in diccionarioEventos:
 	salida.write(contador+"\n")
