@@ -45,10 +45,10 @@ if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
 					totalParcial = totalParcial + eventos[contador][thread][k]
 			eventos[contador][thread] = nuevaLista
 
-#import pprint
-#pprint.pprint(eventos, width=1)
+import pprint
+pprint.pprint(eventos, width=1)
 
-salida = open("FullResults.csv", "w+")
+#salida = open("FullResults.csv", "w+")
 for contador in eventos:
 	salida.write(contador+"\n")
 	for thread in sorted(eventos[contador]):
