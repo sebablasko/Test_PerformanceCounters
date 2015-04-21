@@ -2,7 +2,7 @@
 
 make all
 
-limite_threads=64
+limite_threads=16
 clients=4
 maxPackages=1000000
 repetitions=15
