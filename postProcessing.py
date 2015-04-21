@@ -33,7 +33,7 @@ for filename in sorted(files):
 		if "%" in line: 											# Es un registro de evento
 			registro = filter(lambda x: x!="", line.split(" "))		# Elimino elementos vacios de la lista
 			registro = registro[0:2]								# registro=[TotalApariciones, CodigoEvento]
-			registro[0] = int(registro[0].replace(".",""))
+			registro[0] = int(registro[0].replace(",",""))
 
 			if registro[1] not in diccionarioEventos:
 				diccionarioEventos[registro[1]] = {}
