@@ -52,7 +52,7 @@ for event in events:
 			recordResults = record[record.find(",")+1:]
 			milista.append(recordResults.split(","))
 		for k in range(len(milista[0])):
-			linea = str(k)
+			linea = str(2**k)
 			for minilista in milista:
 				linea = linea+" "+minilista[k]
 			print linea
