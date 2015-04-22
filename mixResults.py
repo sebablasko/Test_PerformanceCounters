@@ -20,4 +20,6 @@ for event in events:
 	for code in event["Codes"]:
 		print("\t" + code + "\t" + event["Codes"][code])
 		for summaryFile in allFiles:
-			print("\t\t"+summaryFile+"\t"+getSummaryResultsFromRecord(code,summaryFile))
+			record = getSummaryResultsFromRecord(code,summaryFile)
+			recordResults = record[record.find(",")+1:]
+			print("\t\t"+summaryFile+"\t"+recordResults)
