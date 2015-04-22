@@ -18,6 +18,7 @@ def saveRegistrosToPlot(titulo, datos, filename):
 		archivo.write(val)
 		archivo.write(" ")
 		archivo.write(datos[val].replace(","," "))
+		archivo.write("\n")
 	archivo.close()
 
 
