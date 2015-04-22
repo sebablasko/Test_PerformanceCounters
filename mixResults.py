@@ -23,7 +23,7 @@ def saveRegistrosToPlot(titulo, datos, filename):
 
 # Crear carpeta para guardar fuentes de datos para graficos
 directory = "plots"
-if os.path.exists(directory):
+if not os.path.exists(directory):
 	os.makedirs(directory)
 
 # cargar datos de eventos y contadores desde json
