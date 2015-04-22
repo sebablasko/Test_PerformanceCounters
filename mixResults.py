@@ -54,5 +54,5 @@ for event in events:
 		for k in range(len(milista[0])):
 			linea = str(k)
 			for minilista in milista:
-				linea = lista+" "+minilista[k]
+				linea = linea+" "+minilista[k]
 			print linea
