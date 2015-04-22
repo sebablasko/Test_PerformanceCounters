@@ -16,15 +16,19 @@ def getThreadsInDataFileName(archivo):
 def getRepetitionInDataFileName(archivo):
 	return int(os.path.basename(archivo.name).split("_")[3].split(".")[0])
 
+# Funciones para calculo estadistico usamos numpy
+import numpy
+
+
 diccionarioEventos = {}
 
 files = glob.glob(os.getcwd()+"/*.data")
 for filename in sorted(files):
-	if(len(sys.argv)<2):
-		print "Error, debe ingresar como parametro el numero de repeticiones que incluyo la prueba"
-		exit()
+	#if(len(sys.argv)<2):
+	#	print "Error, debe ingresar como parametro el numero de repeticiones que incluyo la prueba"
+	#	exit()
 
-	repetitions = sys.argv[1]
+	#repetitions = sys.argv[1]
 	archivo = open(filename, 'r')
 	print "processing: "+archivo.name
 	threads = getThreadsInDataFileName(archivo)
@@ -47,7 +51,8 @@ for filename in sorted(files):
 #pprint.pprint(diccionarioEventos, width=1)
 
 #Concentrar registros en caso de udpmultisocket
-if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
+#if len(os.path.basename(archivo.name).split("_")[4].split("."))>1:
+if "MultiSocket" in archivo.name:
 	print "es multisockets"
 	for contador in diccionarioEventos:
 		for threadsTested in diccionarioEventos[contador]:
@@ -80,8 +85,10 @@ summary = []
 for contador in diccionarioEventos:
 	actual = [contador]
 	for thread in sorted(diccionarioEventos[contador]):
-		actual.append(promedio(diccionarioEventos[contador][thread], repetitions))
+		#actual.append(promedio(diccionarioEventos[contador][thread], repetitions))
 		#actual.append(stddev(diccionarioEventos[contador][thread], repetitions))
+		actual.append(numpy.mean(diccionarioEventos[contador][thread]))
+		actual.append(numpy.std(diccionarioEventos[contador][thread]))
 	summary.append(actual)
 
 salida = open("SummaryResults.csv", "w+")
