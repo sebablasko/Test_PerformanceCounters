@@ -38,10 +38,21 @@ for event in events:
 	for code in event["Codes"]:
 		print("\t" + code + "\t" + event["Codes"][code])
 		tituloGrafico = code + ": " + event["Codes"][code]
-		registros = {}
+		#registros = {}
+		#for summaryFile in allFiles:
+		#	record = getSummaryResultsFromRecord(code,summaryFile)
+		#	recordResults = record[record.find(",")+1:]
+		#	print("\t\t"+summaryFile+"\t"+recordResults)
+		#	registros[summaryFile] = recordResults
+		#saveRegistrosToPlot(tituloGrafico, registros, code)
+
+		milista = []
 		for summaryFile in allFiles:
 			record = getSummaryResultsFromRecord(code,summaryFile)
 			recordResults = record[record.find(",")+1:]
-			print("\t\t"+summaryFile+"\t"+recordResults)
-			registros[summaryFile] = recordResults
-		saveRegistrosToPlot(tituloGrafico, registros, code)
+			milista.append(recordResults.split(","))
+		for k in range(len(milista[0])):
+			linea = str(k)
+			for minilista in milista:
+				linea = lista+" "+minilista[k]
+			print linea
