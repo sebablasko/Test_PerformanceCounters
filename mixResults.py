@@ -21,6 +21,15 @@ def saveRegistrosToPlot(titulo, datos, filename):
 		archivo.write("\n")
 	archivo.close()
 
+def saveRecords(titulo, listaThreads, filename):
+	fullFilename = "plots/" + filename + ".dat"
+	archivo = open(fullFilename,'w+')
+	for k in range(len(listaThreads[0])/2):
+		linea = str(2**k)
+		for minilista in listaThreads:
+			linea = linea+" "+minilista[k]+" "+minilista[k+1]
+		archivo.write(linea+"\n")
+
 
 # Crear carpeta para guardar fuentes de datos para graficos
 directory = "plots"
@@ -51,8 +60,4 @@ for event in events:
 			record = getSummaryResultsFromRecord(code,summaryFile)
 			recordResults = record[record.find(",")+1:]
 			milista.append(recordResults.split(","))
-		for k in range(len(milista[0])/2):
-			linea = str(2**k)
-			for minilista in milista:
-				linea = linea+" "+minilista[k]+" "+minilista[k+1]
-			print linea
+		saveRecords(tituloGrafico, milista, code)
