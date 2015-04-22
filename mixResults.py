@@ -33,7 +33,7 @@ with open('events.json') as data_file:
 # iterar sobre archivos rescatando y recolectando datos
 allFiles = ["SummaryResults_devnull.csv","SummaryResults_UDPMultiThread.csv","SummaryResults_UDPMultiSocket.csv"]
 for event in events:
-	print(tituloGrafico + " (" + str(len(event["Codes"])) + ")")
+	print(event["Name"] + ":" + event["Description"] + " (" + str(len(event["Codes"])) + ")")
 	for code in event["Codes"]:
 		print("\t" + code + "\t" + event["Codes"][code])
 		tituloGrafico = code + ": " + event["Codes"][code]
