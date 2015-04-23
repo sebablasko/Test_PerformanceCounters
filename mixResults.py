@@ -27,7 +27,7 @@ def saveRecords(titulo, listaThreads, filename):
 	for k in range(len(listaThreads[0])/2):
 		linea = str(2**k)
 		for minilista in listaThreads:
-			linea = linea+" "+minilista[k]+" "+minilista[k+1]
+			linea = linea+" "+minilista[2*k]+" "+minilista[2*k+1]
 		archivo.write(linea+"\n")
 
 
