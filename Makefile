@@ -1,7 +1,10 @@
-all: server client devnull
+all: server serverReuse client devnull
 
 server: server.o ../ssocket/ssocket.o
 	gcc server.o ../ssocket/ssocket.o -o server -lpthread
+
+serverReuse: serverReuse.o ../ssocket/ssocket.o
+	gcc serverReuse.o ../ssocket/ssocket.o -o serverReuse -lpthread
 
 rm_server:
 	rm server server.o
