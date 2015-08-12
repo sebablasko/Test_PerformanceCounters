@@ -22,15 +22,21 @@ diccionarioEventos = {}
 for filename in sorted(files):
 	archivo = open(filename, 'r')
 
-	for line in archivo:
-		if "r5" in line:
-			registro = filter(lambda x: x!="", line.split("  "))
-			# registro = [CantidadContada, CodigoEvento, %]
+	#Me salto el inicio inutil del archivo
+	for x in range(5):
+		next(archivo)
 
-			# Agregar al diccionario de eventos
-			if registro[1] not in diccionarioEventos:
-				diccionarioEventos[registro[1]] = []
-			diccionarioEventos[registro[1]].append((registro[0],registro[2]))
+	for line in archivo:
+		# Leo hasta que se termine el listado de datos
+		if line == "\n":
+			break
+		registro = filter(lambda x: x!="", line.split(" "))
+		# registro = [CantidadContada, CodigoEvento, %]
+
+		# Agregar al diccionario de eventos
+		if registro[1] not in diccionarioEventos:
+			diccionarioEventos[registro[1]] = []
+		diccionarioEventos[registro[1]].append((registro[0],registro[2]))
 	archivo.close()
 
 # Reunir los datos en el archivo de salida
