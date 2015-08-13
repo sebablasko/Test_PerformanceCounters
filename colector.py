@@ -51,7 +51,7 @@ for filename in sorted(files):
 		if line == "\n":
 			break
 
-		registro = filter(lambda x: x!="", line.split(" "))
+		registro = filter(lambda x: x!="", line.replace("<not counted>", "<not_counted>").split(" "))
 		
 		try:
 			registro[0] = int(registro[0].replace(".",""))

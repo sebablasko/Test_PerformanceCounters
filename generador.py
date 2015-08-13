@@ -67,6 +67,8 @@ def graficar(poolResultadosDict, evento):
 	# Obtener datos para trabajar
 	detallesEvento = getDetailsOfEvent(morphEventCode(evento))
 	valoresGraficar = getSummaryDataOfEvent(poolResultadosDict, evento)
+	pprint.pprint(detallesEvento, width=1)
+	pprint.pprint(valoresGraficar, width=1)
 
 	# Generar elementos del grafico
 	figura = plt.figure(dpi=72)
@@ -79,7 +81,7 @@ def graficar(poolResultadosDict, evento):
 	# Recuperar numero de threads/sockets
 	threads = []
 	for nombrePrueba in valoresGraficar:
-		threads = valoresGraficar[nombrePrueba].keys()
+		threads = sorted(valoresGraficar[nombrePrueba].keys())
 		break
 	# Recuperar numero de pruebas
 	pruebas = []
@@ -97,14 +99,14 @@ def graficar(poolResultadosDict, evento):
 
 	# itero en los datos
 	pruebaIndex = 0
-	for nombrePrueba in sorted(valoresGraficar):
+	for nombrePrueba in valoresGraficar:
 		means = []
 		std = []
-		for thread in valoresGraficar[nombrePrueba]:
+		for thread in sorted(valoresGraficar[nombrePrueba]):
 			means.append(valoresGraficar[nombrePrueba][thread][0])
 			std.append(valoresGraficar[nombrePrueba][thread][1])
 		# grafico
-		print nombrePrueba
+		print nombrePrueba, means
 		subFigura.bar(bar_width*2 + xGroupsPositions + bar_width*pruebaIndex, means, bar_width,
                  alpha=opacity,
                  color=colores[pruebaIndex],
@@ -128,9 +130,9 @@ def graficar(poolResultadosDict, evento):
                 bbox={'facecolor':'white', 'alpha':0.4, 'pad':6})
 	subFigura.grid(True)
 
-	plt.show()
-	#figura.savefig('plots/'+evento+'.png')
-	#plt.close(figura)
+	#plt.show()
+	figura.savefig('plots/'+evento+'.png')
+	plt.close(figura)
 
 
 # Reviso cada uno de los codigos de eventos registrados en JSON
@@ -138,8 +140,6 @@ for event in summary[nombrePruebas[0]]:
 	#print event
 	#pprint.pprint(summary, width=1)
 	print event
-	pprint.pprint(getSummaryDataOfEvent(summary, event), width=1)
-	pprint.pprint(getDetailsOfEvent(morphEventCode(event)), width=1)
 	graficar(summary, event)
-	break
+	#break
 	print ""
