@@ -12,14 +12,14 @@ if(len(sys.argv)<2):
 	exit()
 
 archivos = sys.argv[1:]
-nombrePruebas = map(lambda x: x.split("_")[0], archivos)
+listadoPruebas = map(lambda x: x.split("_")[0], archivos)
 
 print archivos
 
 # Retorna un diccionario con el resumen de los datos de un determinado evento (Promedio y desviacion para cada prueba para cada eval de Threads.)
 def getSummaryDataOfEvent(datos, evento):
 	ret = {}
-	for prueba in nombrePruebas:
+	for prueba in listadoPruebas:
 		#ret[prueba] = datos[prueba][evento]
 		ret[prueba] = {int(k):v for k,v in datos[prueba][evento].items()}
 	return ret
@@ -49,7 +49,7 @@ def saveRegistrosToPlot(nombreEvento, datosPlot):
 # Generar Diccionario con todo el pool de datos resumidos (para cada prueba, para cada evaluacion de threads/sockets guarda: promedio, desviacion)
 summary = {}
 for i in range(len(archivos)):
-	summary[nombrePruebas[i]] = json.load(open(archivos[i]))
+	summary[listadoPruebas[i]] = json.load(open(archivos[i]))
 
 import pprint
 # pprint.pprint(getSummaryDataOfEvent(summary, "r5340c4"), width=1)
@@ -72,7 +72,7 @@ def graficar(poolResultadosDict, evento):
 
 	# Generar elementos del grafico
 	figura = plt.figure(dpi=72)
-	figura.suptitle(detallesEvento["Code"] + ": " + detallesEvento["Description"], fontsize=14, fontweight='bold')
+	figura.suptitle(detallesEvento["Code"] + ": " + textwrap.fill(detallesEvento['Description'], 80), fontsize=14, fontweight='bold')
 
 	# Seccion de grafico
 	subFigura = figura.add_subplot(111)
@@ -99,7 +99,7 @@ def graficar(poolResultadosDict, evento):
 
 	# itero en los datos
 	pruebaIndex = 0
-	for nombrePrueba in valoresGraficar:
+	for nombrePrueba in listadoPruebas:
 		means = []
 		std = []
 		for thread in sorted(valoresGraficar[nombrePrueba]):
@@ -113,7 +113,6 @@ def graficar(poolResultadosDict, evento):
                  yerr=std,
                  error_kw=error_config,
                  label=nombrePrueba)
-
 		pruebaIndex += 1
 
 	# Rotular el subplot
@@ -129,14 +128,14 @@ def graficar(poolResultadosDict, evento):
                 verticalalignment='top', horizontalalignment='right',
                 bbox={'facecolor':'white', 'alpha':0.4, 'pad':6})
 	subFigura.grid(True)
-
+	plt.autoscale()
 	#plt.show()
 	figura.savefig('plots/'+evento+'.png')
 	plt.close(figura)
 
 
 # Reviso cada uno de los codigos de eventos registrados en JSON
-for event in summary[nombrePruebas[0]]:
+for event in summary[listadoPruebas[0]]:
 	#print event
 	#pprint.pprint(summary, width=1)
 	print event
