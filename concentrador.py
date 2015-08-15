@@ -42,9 +42,12 @@ for filename in sorted(files):
 # Reunir los datos en el archivo de salida
 for key in sorted(diccionarioEventos):
 	total = 0
+	maximo = 0
 	for tupla in diccionarioEventos[key]:
 		total += int(tupla[0].replace('.',''))
-	salida.write(str(total)+"            "+key)
+		maximo = max(int(tupla[0].replace('.','')), maximo)
+	#salida.write(str(total)+"            "+key)
+	salida.write(str(maximo)+"            "+key)
 	salida.write("  \n")
 salida.close()
 
